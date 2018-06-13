@@ -7,10 +7,10 @@ const Sidebar = (props) => {
     return (
         <aside
             className="Sidebar"
-            style={styles.sidebar}>
+            style={styles.sidebar}
+            >
 
-            <UserInfo />
-            <Avatar />
+            <UserInfo user={props.user}/>
 
             <h1
                 style={{
