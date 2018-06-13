@@ -1,17 +1,18 @@
 import React from 'react'
+
 import SignOut from './SignOut'
 import Avatar from './Avatar'
 
-const UserInfo = (props) => {
+const UserInfo = ({user}) => {
     return (
         <div className="UserInfo" style={styles.UserInfo}>
-        <Avatar user={props.user} style={styles.Avatar}/>
+
+        <Avatar user={user} style={styles.Avatar}/>
+
          <div className="user" style={styles.user}>
-                {props.user.userName}
+                {user.userName}
          </div>
-          <a href="#">
-                <i className="fas fa-sign-out-alt"></i>
-          </a>
+         <SignOut />
         </div>
     )
 }
@@ -29,7 +30,7 @@ const styles = {
     },
 
     user: {
-        flex: "1",
+        flex: 1,
     },
 }
 

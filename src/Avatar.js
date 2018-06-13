@@ -1,7 +1,6 @@
 import React from 'react'
 
-
-const Avatar = (user, style) => {
+const Avatar = ({ user, style }) => {
   return (
     <div
       className="Avatar"

@@ -5,8 +5,8 @@ const ChatHeader = () => {
         <div className="ChatHeader"
         style={styles.ChatHeader}>
             <div className="roomInfo">
-                <h2 style={styles.roomInfoh2}>#general</h2>
-                <p style={styles.roomInfop}>Announcements and general chat</p>
+                <h2 style={styles.h2}>#general</h2>
+                <p style={styles.p}>Announcements and general chat</p>
             </div>
         </div>
     )
@@ -22,14 +22,14 @@ ChatHeader: {
     alignItems: "center",
   },
 
-   roomInfoh2: {
+   h2: {
     fontSize: "1.1rem",
-    margin: "0",
+    margin: 0,
   },
 
-   roomInfop: {
+   p: {
     color: "#999",
-    margin: "0",
+    margin: 0,
     fontSize: "0.8rem",
   }
 }
