@@ -1,4 +1,7 @@
 import React from 'react'
+import RoomList from './RoomList'
+import Avatar from './Avatar'
+import UserInfo from './UserInfo'
 
 const Sidebar = (props) => {
     return (
@@ -6,38 +9,30 @@ const Sidebar = (props) => {
             className="Sidebar"
             style={styles.sidebar}>
 
-            <div 
-            className="UserInfo"
-            style={styles.children}>
-                <div
-                    className="Avatar"
-                ></div>
-                <div className="user"> 
-                {props.user.userName}
-                </div>
+            <UserInfo />
+            <Avatar />
 
-                <a href="#">
-                    <i className="fas fa-sign-out-alt"></i>
-                </a>
-            </div>
             <h1
-            style={{
-                ...styles.children,
-                ...styles.h1,
-            }}
-            >XTBC 18</h1>
+                style={{
+                    ...styles.children,
+                    ...styles.h1,
+                }}
+            >
+            XTBC 18
+            </h1>
+               
             <nav
-             className="RoomList"
-             style={styles.children}>
-                <h2>Rooms</h2>
+                className="RoomList" 
+              
+                style={styles.children}> 
+                 <RoomList />
+                {/* <h2>Rooms</h2>
                 <ul>
                     <li><a href="#">general</a></li>
                     <li><a href="#">random</a></li>
-                </ul>
+                </ul> */}
             </nav>
         </aside>
-
-
     )
 }
 
@@ -59,6 +54,13 @@ const styles = {
         color: "white",
         fontSize: "1.2rem",
         marginTop: "0",
+    },
+
+    Avatar: {
+        height: "40px",
+        width: "40px",
+        fontSize: "1rem",
+        borderRadius: "20px",
     }
 }
 

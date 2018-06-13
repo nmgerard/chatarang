@@ -4,6 +4,8 @@ import ChatHeader from './ChatHeader'
 import MessageList from './MessageList'
 import MessageForm from './MessageForm'
 
+import Avatar from './Avatar'
+
 class Chat extends Component {
     constructor() {
         super()
@@ -21,6 +23,7 @@ class Chat extends Component {
                 },
             ]
         }
+
     }
 
     addMessage = (body) => {
@@ -30,17 +33,28 @@ class Chat extends Component {
             userName: this.props.user.userName,
             body,
         })
-            this.setState({ messages })
+        this.setState({ messages })
     }
 
     render() {
         return (
-            <div className="Chat">
+            <div className="Chat"
+                style={styles.Chat}>
                 <ChatHeader />
-                <MessageList messages={this.state.messages}/>
-                <MessageForm addMessage={this.addMessage}/>
+                <MessageList messages={this.state.messages} />
+                <MessageForm addMessage={this.addMessage} />
+
+
             </div>
         )
+    }
+}
+
+const styles = {
+    Chat: {
+        flex: "1",
+        display: "flex",
+        flexDirection: "column",
     }
 }
 
