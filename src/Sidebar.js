@@ -25,7 +25,8 @@ const Sidebar = ({user, signOut}) => {
 
 const styles = {
   Sidebar: {
-    backgroundColor: '#333344',
+    // backgroundColor: '#316d3f',
+    backgroundImage: `url(https://images.unsplash.com/photo-1519120693210-d47b03b31d77?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3b8d462021896b6a8825629fb69a04b4&auto=format&fit=crop&w=1537&q=80)`,
     color: 'rgba(255, 255, 255, 0.8)',
     width: '12rem',
     padding: '1rem 0',

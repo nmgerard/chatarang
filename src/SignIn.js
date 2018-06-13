@@ -51,7 +51,7 @@ class SignIn extends Component {
 
           <div className="blurb">
             <h2 className={css(styles.h2)}>You're in good company.</h2>
-            <p>Ones of people are already using Chatarang!</p>
+            <p className={css(styles.p)}>Join the ones of people are already using Chatarang!</p>
           </div>
         </main>
       </div>
@@ -63,7 +63,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     height: '100vh',
-    backgroundColor: '#f6f6f6',
+    // backgroundColor: '#f6f6f6',
+    backgroundImage: `url(https://images.unsplash.com/photo-1518965539400-77d851d65c43?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8251a92a6aa331a81f1736c2311ed465&auto=format&fit=crop&w=933&q=80)`,
+
   },
   header: {
     backgroundColor: '#fff',
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
     boxShadow: '0 1px 1px rgba(0,0,0,.1)',
   },
   title: {
-    color: '#333344',
+    color: '#316d3f',
     fontWeight: 400,
     textTransform: 'uppercase',
     lineHeight: '80px',
@@ -117,6 +119,7 @@ const styles = StyleSheet.create({
   },
   h2: {
     fontWeight: 'normal',
+    color: "white",
   },
   button: {
     display: 'block',
@@ -124,10 +127,13 @@ const styles = StyleSheet.create({
     padding: '1rem 2rem',
     fontSize: '1.2rem',
     borderRadius: '1rem',
-    backgroundColor: '#333334',
+    backgroundColor: '#316d3f',
     color: 'white',
     width: '20rem',
   },
+  p: {
+      color: "white",
+  }
 })
 export default SignIn
 
