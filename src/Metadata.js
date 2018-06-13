@@ -2,7 +2,7 @@ import React from 'react'
 
 const Metadata = ({ message }) => {
   return (
-    <div className="Metadata" style={styles.data}>
+    <div className="Metadata" style={styles.Metadata}>
       <div className="user" style={styles.user}>
         {message.user.userName}
       </div>
@@ -14,7 +14,7 @@ const Metadata = ({ message }) => {
 }
 
 const styles = {
-  data: {
+  Metadata: {
     display: 'flex',
     alignItems: 'baseline',
   },

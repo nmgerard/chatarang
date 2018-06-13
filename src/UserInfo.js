@@ -3,7 +3,7 @@ import React from 'react'
 import SignOut from './SignOut'
 import Avatar from './Avatar'
 
-const UserInfo = ({user}) => {
+const UserInfo = ({user, signOut}) => {
     return (
         <div className="UserInfo" style={styles.UserInfo}>
 
@@ -12,7 +12,7 @@ const UserInfo = ({user}) => {
          <div className="user" style={styles.user}>
                 {user.userName}
          </div>
-         <SignOut />
+         <SignOut signOut={signOut} />
         </div>
     )
 }

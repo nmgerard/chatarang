@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     boxShadow: '0 1px 1px rgba(0,0,0,.1)',
   },
   title: {
-    color: '#ff3344',
+    color: '#333344',
     fontWeight: 400,
     textTransform: 'uppercase',
     lineHeight: '80px',
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     padding: '1rem 2rem',
     fontSize: '1.2rem',
     borderRadius: '1rem',
-    backgroundColor: '#ff3333',
+    backgroundColor: '#333334',
     color: 'white',
     width: '20rem',
   },

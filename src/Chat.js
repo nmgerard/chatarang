@@ -15,7 +15,7 @@ class Chat extends Component {
   }
 
   componentDidMount(){
-      base.syncState('nik', {
+      base.syncState('messages', {
           context: this,
           state: 'messages',
           asArray: true, 
