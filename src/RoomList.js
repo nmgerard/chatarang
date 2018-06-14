@@ -1,21 +1,40 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { StyleSheet, css } from 'aphrodite'
 
+import RoomLink from './RoomLink'
 
-const RoomList = () => {
+class RoomList extends Component {
+    state = {
+        rooms: {
+            general: {
+                name: 'general',
+                description: 'Chat about anything',
+            },
+
+            random: {
+                name: 'random',
+                description: 'idk yo',
+            },
+        }
+    }
+    render(){
     return (
         <nav
             className={`RoomList ${css(styles.nav)}`}
         >
             <h2 className={css(styles.h2)}>Rooms</h2>
             <ul className={css(styles.list)}>
-                <li className={css(styles.item)}>
-                    <a href="#" className={css(styles.link)}>general</a>
-                </li>
-                <li className={css(styles.item)}>
-                    <a href="#" className={css(styles.link)}>random</a>
-                </li>
+            {
+              Object.keys(this.state.rooms).map(roomName => (
+                <RoomLink
+                  key={roomName}
+                  room={this.state.rooms[roomName]}
+                  loadRoom={this.props.loadRoom}
+                />
+              ))
+            }
             </ul>
+
             <form>
                         <input 
                         type="text" 
@@ -28,6 +47,7 @@ const RoomList = () => {
 
         </nav>
     )
+}
 }
 
 const styles = StyleSheet.create({

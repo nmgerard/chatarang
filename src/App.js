@@ -4,7 +4,6 @@ import './App.css'
 import SignIn from './SignIn'
 import Main from './Main'
 
-
 class App extends Component {
   state = {
     user: {},
