@@ -6,48 +6,63 @@ import MessageForm from './MessageForm'
 import base from './base'
 
 class Chat extends Component {
-  constructor() {
-    super()
+    constructor() {
+        super()
 
-    this.state = {
-      messages: []
+        this.state = {
+            messages: [],
+            rebaseBinding: null,
+        }
     }
-  }
 
-  componentDidMount(){
-      base.syncState('messages', {
-          context: this,
-          state: 'messages',
-          asArray: true, 
-      })
-  }
+    componentDidMount() {
+        this.syncMessages()
+    }
 
-  addMessage = (body) => {
-    const messages = [...this.state.messages]
-    messages.push({
-      id: Date.now(),
-      user: this.props.user,
-      body,
-    })
+    componentDidUpdate(prevProps) {
+        if (prevProps.room.name !== this.props.room.name) {
+            this.syncMessages()
+        }
+    }
 
-    this.setState({ messages })
-  }
+    syncMessages = () => {
+        if (this.state.rebaseBinding) {
+            base.removeBinding(this.state.rebaseBinding)
+        }
+        const rebaseBinding = base.syncState(`${this.props.room.name}/messages`, {
+            context: this,
+            state: 'messages',
+            asArray: true,
+        })
+        this.setState({ rebaseBinding })
+    }
 
-  render() {
-    return (
-      <div className="Chat" style={styles}>
-        <ChatHeader room={this.props.room} />
-        <MessageList messages={this.state.messages} room={this.props.room} />
-        <MessageForm addMessage={this.addMessage} />
-      </div>
-    )
-  }
+    addMessage = (body) => {
+        const messages = [...this.state.messages]
+        messages.push({
+            id: Date.now(),
+            user: this.props.user,
+            body,
+        })
+
+        this.setState({ messages })
+    }
+
+    render() {
+        return (
+            <div className="Chat" style={styles}>
+                <ChatHeader room={this.props.room} />
+                <MessageList messages={this.state.messages} room={this.props.room} />
+                <MessageForm addMessage={this.addMessage} />
+            </div>
+        )
+    }
 }
 
 const styles = {
-  flex: 1,
-  display: 'flex',
-  flexDirection: 'column',
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
 }
 
 export default Chat
