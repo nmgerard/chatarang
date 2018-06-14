@@ -12,6 +12,7 @@ class RoomForm extends Component {
   handleSubmit = (ev) => {
     ev.preventDefault()
     this.props.addRoom(this.state.room)
+    this.props.hideRoomForm()
   }
 
   handleChange = (ev) => {
@@ -83,11 +84,15 @@ const styles = StyleSheet.create({
     left: 0,
     height: '100vh',
     width: '100vw',
-    backgroundColor: '#f6f6f6',
+  //  backgroundColor: '#f6f6f6',
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
+    backgroundImage: `url(https://images.unsplash.com/photo-1493551511613-abc8320c265e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2b4d31cd0082364b59d039cca5e420c3&auto=format&fit=crop&w=1950&q=80)`
   },
 
   title: {
-    color: '#ff3344',
+    color: 'white',
+    backgroundColor: "black",
     fontWeight: 400,
     lineHeight: '80px',
     fontSize: '2rem',
@@ -105,7 +110,8 @@ const styles = StyleSheet.create({
   },
 
   form: {
-    backgroundColor: 'white',
+    //backgroundColor: 'transparent',
+    backgroundColor: 'rgba(255,255,255, 0.4)',
     boxShadow: '0 1px 1px rgba(0,0,0,.1)',
     marginBottom: '2rem',
     paddingBottom: '2rem',
@@ -114,7 +120,8 @@ const styles = StyleSheet.create({
   label: {
     display: 'block',
     textTransform: 'uppercase',
-    color: '#999',
+    color: "black",
+    //color: '#999',
   },
 
   input: {
@@ -147,7 +154,7 @@ const styles = StyleSheet.create({
     margin: '0 1rem',
     fontSize: '1.2rem',
     borderRadius: '1rem',
-    backgroundColor: '#ff3333',
+    backgroundColor: '#316d3f',
     color: 'white',
     width: '10rem',
     cursor: 'pointer',

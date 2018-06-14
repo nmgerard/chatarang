@@ -3,12 +3,12 @@ import { StyleSheet, css } from 'aphrodite'
 
 import RoomLink from './RoomLink'
 import RoomForm from './RoomForm'
-
 import base from './base'
 
 class RoomList extends Component {
     state = {
         rooms: {},
+        showRoomForm: false,
     }
 
     componentDidMount() {
@@ -20,51 +20,68 @@ class RoomList extends Component {
             }
         )
     }
+
+    showRoomForm = () => {
+        this.setState({ showRoomForm: true })
+    }
+
+    hideRoomForm = () => {
+        this.setState({ showRoomForm: false })
+    }
+
     addRoom = (room) => {
         const rooms = { ...this.state.rooms }
         rooms[room.name] = room
         this.setState({ rooms })
     }
     render() {
-        return (
+        if (this.state.showRoomForm) {
+            return (
+                <RoomForm
+                    hideRoomForm={this.hideRoomForm}
+                    addRoom={this.addRoom}
+                />
+            )
+        } else {
+            return (
+                <nav
+                    className={`RoomList ${css(styles.nav)}`}
+                >
+                    <div className={css(styles.heading)}>
+                        <h2 className={css(styles.h2)}>Rooms</h2>
+                        <button
+                            className={css(styles.button)}
+                            onClick={this.showRoomForm}
+                        >
+                            <i className="fas fa-plus-circle" title="Add room"></i>
+                        </button>
+                    </div>
 
-            <nav
-                className={`RoomList ${css(styles.nav)}`}
-            >
-                <div className={css(styles.heading)}>
-                    <h2 className={css(styles.h2)}>Rooms</h2>
-                    <button
-                        className={css(styles.button)}
-                        onClick={this.showRoomForm}
-                    >
-                        <i className="fas fa-plus-circle" title="Add room"></i>
-                    </button>
-                </div>
+                    <ul className={css(styles.list)}>
+                        {
+                            Object.keys(this.state.rooms).map(roomName => (
+                                <RoomLink
+                                    key={roomName}
+                                    room={this.state.rooms[roomName]}
+                                    loadRoom={this.props.loadRoom}
+                                />
+                            ))
+                        }
+                    </ul>
 
-                <ul className={css(styles.list)}>
-                    {
-                        Object.keys(this.state.rooms).map(roomName => (
-                            <RoomLink
-                                key={roomName}
-                                room={this.state.rooms[roomName]}
-                                loadRoom={this.props.loadRoom}
-                            />
-                        ))
-                    }
-                </ul>
-
-                {/* <form>
+                    {/* <form>
                         <input 
                         type="text" 
                         name="roomName" 
                         className={css(styles.input)}
                         placeholder="Enter room name..."/>
                 {/* <input type="submit" value="Submit" /> */}
-                {/* </form>
+                    {/* </form>
             <button type="submit" className={css(styles.add)}>add room</button> */}
 
-            </nav>
-        )
+                </nav>
+            )
+        }
     }
 }
 
@@ -88,9 +105,9 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-      },
+    },
 
-      button: {
+    button: {
         border: 0,
         backgroundColor: 'transparent',
         outline: 0,
@@ -99,11 +116,11 @@ const styles = StyleSheet.create({
         color: 'rgba(255,255,255, 0.4)',
         cursor: 'pointer',
         transition: 'color 0.25s ease-out',
-    
+
         ':hover': {
-          color: 'white',
+            color: 'white',
         }
-      },
+    },
 
     // add: {
     //     display: 'block',
