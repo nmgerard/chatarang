@@ -25,7 +25,7 @@ class RoomForm extends Component {
     return (
       <div className={`RoomForm ${css(styles.roomForm)}`}>
         <main className={css(styles.main)}>
-          <h2 className={css(styles.title)}>Create a room</h2>
+          <h2 className={css(styles.title)}></h2>
           <form
             className={css(styles.form)}
             onSubmit={this.handleSubmit}
@@ -85,17 +85,18 @@ const styles = StyleSheet.create({
     height: '100vh',
     width: '100vw',
   //  backgroundColor: '#f6f6f6',
-  backgroundRepeat: "no-repeat",
+  //backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
-    backgroundImage: `url(https://images.unsplash.com/photo-1493551511613-abc8320c265e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2b4d31cd0082364b59d039cca5e420c3&auto=format&fit=crop&w=1950&q=80)`
+    backgroundImage: `url(https://images.unsplash.com/photo-1481277542470-605612bd2d61?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=eda6f34a3343980b50f2ba298103093f&auto=format&fit=crop&w=1895&q=80)`
   },
 
   title: {
-    color: 'white',
+    color: 'whitesmoke',
     backgroundColor: "rgba(255,255,255, 0.4",
     fontWeight: 400,
     lineHeight: '80px',
     fontSize: '2rem',
+    marginBottom: '2rem',
   },
 
   main: {
@@ -111,16 +112,18 @@ const styles = StyleSheet.create({
 
   form: {
     //backgroundColor: 'transparent',
-    backgroundColor: 'rgba(255,255,255, 0.4)',
+    backgroundColor: 'rgba(0,0,0, 0.4)',
     boxShadow: '0 1px 1px rgba(0,0,0,.1)',
     marginBottom: '2rem',
     paddingBottom: '2rem',
+    marginTop: '7rem',
+    color: "whitesmoke",
   },
 
   label: {
     display: 'block',
     textTransform: 'uppercase',
-    color: "black",
+    color: "whitesmoke",
     //color: '#999',
   },
 
@@ -133,6 +136,8 @@ const styles = StyleSheet.create({
     marginBottom: '1rem',
     textAlign: 'center',
     padding: '0.5rem',
+    backgroundColor: 'rgb(250, 250, 250, 0.6)',
+
 
     ':focus': {
       outline: 0,
@@ -154,16 +159,31 @@ const styles = StyleSheet.create({
     margin: '0 1rem',
     fontSize: '1.2rem',
     borderRadius: '1rem',
-    backgroundColor: 'rgb(49, 109, 63, 0.9)',
+    backgroundColor: 'rgb(49, 109, 63, 0.7)',
     color: 'white',
     width: '10rem',
     cursor: 'pointer',
     outline: 0,
+
+    cursor: 'pointer',
+    transition: 'color 0.25s ease-out',
+
+    ':hover': {
+        backgroundColor: 'rgb(49,109,63)',
+    }
   },
 
   cancel: {
-    backgroundColor: 'white',
+    backgroundColor: 'rgb(250, 250, 250, 0.6)',
     color: '#666',
+
+    cursor: 'pointer',
+    transition: 'color 0.25s ease-out',
+
+    ':hover': {
+        backgroundColor: 'rgb(150,31,31)',
+        color: "white",
+    }
   },
 })
 
