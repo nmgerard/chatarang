@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite'
-import { auth, googleProvider } from './base'
+import { auth, googleProvider, gitHubProvider, faceBookProvider, twitterProvider} from './base'
 
 class SignIn extends Component {
     state = {
@@ -13,20 +13,22 @@ class SignIn extends Component {
 
     handleSubmit = (ev) => {
         ev.preventDefault()
-        this.props.handleAuth({
-            uid: '234243',
-            displayName: this.state.email,
-            email: this.state.email,
-        })
     }
 
     authenticate = () => {
-        auth
-        .signInWithPopup(googleProvider)
-        .then(response => {
-            this.props.handleAuth(response.user)
-        }
-        )
+        auth.signInWithPopup(googleProvider)
+    }
+
+    authenticateGitHub = () => {
+        auth.signInWithPopup(gitHubProvider)
+    }
+
+    authenticateFaceBook = () => {
+        auth.signInWithPopup(faceBookProvider)
+    }
+
+    authenticateTwitter = () => {
+        auth.signInWithPopup(twitterProvider)
     }
 
     render() {
@@ -43,7 +45,7 @@ class SignIn extends Component {
                         className={css(styles.form)}
                         onSubmit={this.handleSubmit}
                     >
-                        <h1>Welcome!</h1>
+                        <h1>Welcome! Sign In</h1>
                         {/* <label htmlFor="email" className={css(styles.label)}>
                             Email
             </label>
@@ -65,7 +67,34 @@ class SignIn extends Component {
                         >
                             <i className={`fab fa-google ${css(styles.brandIcon)}`}></i>
 
-                            Sign in with Google
+                            Google
+            </button>
+            <button
+                            type="button"
+                            className={css(styles.button)}
+                            onClick={this.authenticateGitHub}
+                        >
+                            <i className={`fab fa-github ${css(styles.brandIcon)}`}></i>
+
+                            GitHub
+            </button>
+            <button
+                            type="button"
+                            className={css(styles.button)}
+                            onClick={this.authenticateFaceBook}
+                        >
+                            <i className={`fab fa-facebook-f ${css(styles.brandIcon)}`}></i>
+
+                            Facebook
+            </button>
+            <button
+                            type="button"
+                            className={css(styles.button)}
+                            onClick={this.authenticateTwitter}
+                        >
+                            <i className={`fab fa-twitter ${css(styles.brandIcon)}`}></i>
+
+                            Twitter
             </button>
                     </form>
 
@@ -85,10 +114,11 @@ const styles = StyleSheet.create({
         height: '100vh',
         // backgroundColor: '#f6f6f6',
         backgroundImage: `url(https://images.unsplash.com/photo-1518965539400-77d851d65c43?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8251a92a6aa331a81f1736c2311ed465&auto=format&fit=crop&w=933&q=80)`,
-
     },
     header: {
-        backgroundColor: '#fff',
+        //backgroundColor: '#fff',
+        backgroundColor: 'rgba(255, 255, 255, 0.7)',
+ 
         height: '4rem',
         padding: '0 2rem',
         margin: 0,
@@ -115,9 +145,10 @@ const styles = StyleSheet.create({
     form: {
         width: '40rem',
         height: '15rem',
-        backgroundColor: 'white',
+        backgroundColor: 'rgba(255, 255, 255, 0.2)',
         boxShadow: '0 1px 1px rgba(0,0,0,.1)',
         marginBottom: '2rem',
+        color: 'white',
     },
     label: {
         display: 'block',
@@ -142,14 +173,16 @@ const styles = StyleSheet.create({
         color: "white",
     },
     button: {
-        display: 'block',
+        display: 'inline-block',
         margin: '0 auto',
         padding: '1rem 2rem',
         fontSize: '1.2rem',
         borderRadius: '1rem',
-        backgroundColor: '#316d3f',
+        backgroundColor: 'rgb(49, 109, 63, 0.7)',
         color: 'white',
-        width: '20rem',
+        width: '15rem',
+        marginBottom: '.5rem',
+        marginRight: '.5rem',
     },
     p: {
         color: "white",

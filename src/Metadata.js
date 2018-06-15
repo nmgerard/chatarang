@@ -27,7 +27,7 @@ const styles = {
   time: {
     color: '#999',
     fontSize: '0.8rem',
-  }
+  },
 }
 
 export default Metadata
