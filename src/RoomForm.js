@@ -12,7 +12,7 @@ class RoomForm extends Component {
   handleSubmit = (ev) => {
     ev.preventDefault()
     this.props.addRoom(this.state.room)
-    this.props.hideRoomForm()
+    this.props.history.goBack()
   }
 
   handleChange = (ev) => {
@@ -25,7 +25,7 @@ class RoomForm extends Component {
     return (
       <div className={`RoomForm ${css(styles.roomForm)}`}>
         <main className={css(styles.main)}>
-          <h2 className={css(styles.title)}></h2>
+          <h2 className={css(styles.title)}>Create a Room</h2>
           <form
             className={css(styles.form)}
             onSubmit={this.handleSubmit}
@@ -59,7 +59,7 @@ class RoomForm extends Component {
               <button
                 type="button"
                 className={css(styles.button, styles.cancel)}
-                onClick={this.props.hideRoomForm}
+                onClick={this.props.history.goBack}
               >
                 Cancel
               </button>
