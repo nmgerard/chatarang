@@ -183,6 +183,13 @@ const styles = StyleSheet.create({
         width: '15rem',
         marginBottom: '.5rem',
         marginRight: '.5rem',
+
+        transition: 'color 0.25s ease-out',
+
+    ':hover': {
+      backgroundColor: 'rgb(0,0,0, 0.6)',
+      cursor: 'pointer',
+    },
     },
     p: {
         color: "white",
