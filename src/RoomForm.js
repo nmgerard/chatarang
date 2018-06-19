@@ -1,12 +1,28 @@
 import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite'
+import Select from 'react-select'
+import 'react-select/dist/react-select.css'
 
 class RoomForm extends Component {
   state = {
     room: {
-        name: '',
-        description: ''
+      name: '',
+      description: '',
+      public: true,
+      members: [],
     },
+  }
+
+  users = () => {
+    return Object.keys(this.props.users).map(
+      uid => {
+        const user = this.props.users[uid]
+        return {
+          value: uid,
+          label: `${user.displayName} (${user.email})`,
+        }
+      }
+    )
   }
 
   handleSubmit = (ev) => {
@@ -16,8 +32,19 @@ class RoomForm extends Component {
   }
 
   handleChange = (ev) => {
+    const room = { ...this.state.room }
+
+    const target = ev.target
+    const value = target.type === 'checkbox' ? target.checked : target.value
+
+    room[target.name] = value
+    this.setState({ room })
+  }
+
+  handleSelectChange = (selectedOption) => {
     const room = {...this.state.room}
-    room[ev.target.name] = ev.target.value
+    room.members = selectedOption
+
     this.setState({ room })
   }
 
@@ -30,6 +57,17 @@ class RoomForm extends Component {
             className={css(styles.form)}
             onSubmit={this.handleSubmit}
           >
+            <p>
+              <label className={css(styles.label)}>
+                <input
+                  type="checkbox"
+                  name="public"
+                  checked={this.state.room.public}
+                  onChange={this.handleChange}
+                />
+                Public Room
+              </label>
+            </p>
             <p>
               <label htmlFor="name" className={css(styles.label)}>
                 Room Name
@@ -55,6 +93,25 @@ class RoomForm extends Component {
                 onChange={this.handleChange}
               />
             </p>
+            {
+              !this.state.room.public && (
+                <div>
+                  <label
+                    htmlFor="members"
+                    className={css(styles.label)}
+                  >
+                    Members
+                  </label>
+                  <Select
+                    multi
+                    name="members"
+                    options={this.users()}
+                    value={this.state.room.members}
+                    onChange={this.handleSelectChange}
+                  />
+                </div>
+              )
+            }
             <div className={css(styles.buttonContainer)}>
               <button
                 type="button"
@@ -84,19 +141,20 @@ const styles = StyleSheet.create({
     left: 0,
     height: '100vh',
     width: '100vw',
-  //  backgroundColor: '#f6f6f6',
-  //backgroundRepeat: "no-repeat",
-  backgroundSize: "cover",
+    //  backgroundColor: '#f6f6f6',
+    //backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
     backgroundImage: `url(https://images.unsplash.com/photo-1481277542470-605612bd2d61?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=eda6f34a3343980b50f2ba298103093f&auto=format&fit=crop&w=1895&q=80)`
   },
 
   title: {
-    color: 'whitesmoke',
-    backgroundColor: "rgba(255,255,255, 0.4",
+    color: 'rgb(49,109,63)',
+    backgroundColor: "transparent",
     fontWeight: 400,
     lineHeight: '80px',
     fontSize: '2rem',
     marginBottom: '2rem',
+    marginTop: '1rem',
   },
 
   main: {
@@ -111,7 +169,6 @@ const styles = StyleSheet.create({
   },
 
   form: {
-    //backgroundColor: 'transparent',
     backgroundColor: 'rgba(0,0,0, 0.4)',
     boxShadow: '0 1px 1px rgba(0,0,0,.1)',
     marginBottom: '2rem',
@@ -124,21 +181,20 @@ const styles = StyleSheet.create({
     display: 'block',
     textTransform: 'uppercase',
     color: "whitesmoke",
-    //color: '#999',
   },
 
   input: {
     width: '20rem',
     fontSize: '1.5rem',
     border: 0,
-    borderBottom: '1px solid black',
+    borderBottom: '1px solid whitesmoke',
     marginTop: '1rem',
     marginBottom: '1rem',
     textAlign: 'center',
     padding: '0.5rem',
-    backgroundColor: 'rgb(250, 250, 250, 0.6)',
-
-
+    //backgroundColor: 'rgb(250, 250, 250, 0.6)',
+    backgroundColor: "transparent",
+    color: "whitesmoke",
     ':focus': {
       outline: 0,
     },
@@ -167,7 +223,7 @@ const styles = StyleSheet.create({
     transition: 'color 0.25s ease-out',
 
     ':hover': {
-        backgroundColor: 'rgb(49,109,63)',
+      backgroundColor: 'rgb(49,109,63)',
     }
   },
 
@@ -179,8 +235,8 @@ const styles = StyleSheet.create({
     transition: 'color 0.25s ease-out',
 
     ':hover': {
-        backgroundColor: 'rgb(150,31,31)',
-        color: "white",
+      backgroundColor: 'rgb(150,31,31)',
+      color: "white",
     }
   },
 })

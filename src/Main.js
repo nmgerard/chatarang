@@ -5,12 +5,9 @@ import Chat from './Chat'
 import base from './base'
 
 class Main extends Component {
-    constructor(){
-        super()
-           this.state = {
+    state = {
         room: {},
         rooms: {},
-    }
     }
  
 
@@ -46,8 +43,20 @@ class Main extends Component {
       }
     
       loadValidRoom = () => {
-        const roomName = Object.keys(this.state.rooms)[0]
-        this.props.history.push(`/rooms/${roomName}`)
+        const realRoomName = Object.keys(this.state.rooms).find(
+            roomName => this.state.rooms[roomName]
+        )
+        this.props.history.push(`/rooms/${realRoomName}`)
+      }
+
+      removeRoom = (room) => {
+        const rooms = {...this.state.rooms}
+        rooms[room.name] = null
+    
+        this.setState(
+          { rooms },
+          this.loadValidRoom
+        )
       }
 
     render() {
@@ -55,10 +64,13 @@ class Main extends Component {
             <div className="Main" style={styles}>
                 <Sidebar 
                 user={this.props.user} 
+                users={this.props.users}
                 signOut={this.props.signOut} />
                 <Chat 
                 user={this.props.user} 
-                room={this.state.room}/>
+                room={this.state.room}
+                removeRoom={this.removeRoom}
+                />
             </div>
         )
     }
