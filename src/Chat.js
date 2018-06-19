@@ -43,6 +43,7 @@ class Chat extends Component {
             id: `${this.props.user.uid}-${Date.now()}`,
             user: this.props.user,
             body,
+            createdAt: Date.now(),
         })
 
         this.setState({ messages })

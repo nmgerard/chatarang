@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import Message from './Message'
 
-const MessageList = ({messages, room}) => {
+class MessageList extends Component {
+    componentDidUpdate(prevProps) {
+        if (prevProps.messages.length < this.props.messages.length) {
+          this.scrollToBottom()
+        }
+      }
+
+      scrollToBottom = () => {
+        this.messagesEnd.scrollIntoView({ behavior: 'smooth' })
+      }
+      render(){
+            const { messages, room } = this.props
+      
     return (
+      
         <div className="MessageList" style={styles.MessageList}>
             <div className="roomAnnouncement" style={styles.roomAnnouncement}>
                 <h3 style={styles.h3}>#{room.name}</h3>
@@ -14,8 +27,10 @@ const MessageList = ({messages, room}) => {
                     <Message key={msg.id} message={msg} />
                 ))
             }
+             <div ref={el => this.messagesEnd = el}></div>
         </div>
     )
+}
 }
 
 const styles = {
