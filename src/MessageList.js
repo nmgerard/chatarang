@@ -23,7 +23,7 @@ const styles = {
         backgroundImage: `url(https://images.unsplash.com/photo-1504204267155-aaad8e81290d?ixlib=rb-0.3.5&s=9c03a31650c01e877b240fd3a1b3960e&auto=format&fit=crop&w=1950&q=80)`,
         flex: 1,
         paddingBottom: "1rem",
-        overFlowY: "scroll",
+        overflowY: "scroll",
     },
 
     roomAnnouncement: {

@@ -164,8 +164,6 @@ const styles = StyleSheet.create({
     width: '10rem',
     cursor: 'pointer',
     outline: 0,
-
-    cursor: 'pointer',
     transition: 'color 0.25s ease-out',
 
     ':hover': {

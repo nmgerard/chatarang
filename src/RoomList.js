@@ -109,50 +109,6 @@ const styles = StyleSheet.create({
             color: 'white',
         }
     },
-
-    // add: {
-    //     display: 'block',
-    //     margin: '0 auto',
-    //     padding: '.5rem 1rem',
-    //     fontSize: '1rem',
-    //     borderRadius: '1rem',
-    //     backgroundColor: '#316d3f',
-    //     color: 'whitesmoke',
-    //     width: '10rem',
-    //     font: "sans-serif",
-
-    //     '::before': {
-    //         content: '" "',
-    //     },
-
-    //     ':hover': {
-    //         backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    //     }
-    // },
-
-    // input: {
-    //     display: 'block',
-    //     margin: '0 auto',
-    //     flex: 1,
-    //     width: '10rem',
-    //     fontSize: '1rem',
-    //     border: 0,
-    //     marginBottom: ".5rem",
-    //     padding: ".5rem .15rem",
-    //     borderRadius: '1rem',
-    //     backgroundColor: "rgba(255, 255, 255, 0.2)",
-    //     color: "whitesmoke",
-    //     font: "sans-serif",
-
-    //     ':focus': {
-    //         outline: 0,
-    //     },
-    //     '::placeholder': {
-    //         color: "whitesmoke",
-    //         fontSize: "1rem",
-    //         font: "sans-serif",
-    //     }
-    // },
 })
 
 export default RoomList

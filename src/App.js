@@ -2,21 +2,21 @@ import React, { Component } from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 
 import './App.css'
-import { auth } from './base'
+import  { auth } from './base'
 import SignIn from './SignIn'
 import Main from './Main'
 
 class App extends Component {
-  state = {
-    user: {},
-  }
+  constructor() {
+     super()
 
-  componentDidMount() {
-    const user = JSON.parse(localStorage.getItem('user'))
-    if (user) {
-      this.setState({ user })
+     const user = JSON.parse(localStorage.getItem('user')) || {}
+    this.state = {
+      user
     }
-
+  }
+  
+  componentDidMount() {
     auth.onAuthStateChanged(
       user => {
         if (user) {
