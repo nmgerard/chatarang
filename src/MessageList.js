@@ -16,11 +16,14 @@ class MessageList extends Component {
         const { messages, room } = this.props
 
         return (
-
             <div className="MessageList" style={styles.MessageList}>
                 <div className="roomAnnouncement" style={styles.roomAnnouncement}>
-                    <h3 style={styles.h3}>#{room.name}</h3>
-                    <p>This is the beginning of the #{room.name} room</p>
+                    <h3 style={styles.h3}>#{room.displayName}</h3>
+                    {
+                        room.dm
+                        ? <p>This is the very beginning of the direct message.</p>
+                        : <p>This is the very beginning of the #{room.displayName} room.</p>
+                    }
                 </div>
                 {
                     messages.map(msg => (

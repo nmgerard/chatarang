@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite'
-import { auth, googleProvider, gitHubProvider, faceBookProvider, twitterProvider} from './base'
+import { auth, googleProvider, gitHubProvider, faceBookProvider, twitterProvider } from './base'
 
 class SignIn extends Component {
     state = {
@@ -11,25 +11,21 @@ class SignIn extends Component {
         this.setState({ email: ev.target.value })
     }
 
-    handleSubmit = (ev) => {
-        ev.preventDefault()
+    authenticate = (provider) => {
+        auth.signInWithPopup(provider)
     }
 
-    authenticate = () => {
-        auth.signInWithPopup(googleProvider)
-    }
+    // authenticateGitHub = () => {
+    //     auth.signInWithPopup(gitHubProvider)
+    // }
 
-    authenticateGitHub = () => {
-        auth.signInWithPopup(gitHubProvider)
-    }
+    // authenticateFaceBook = () => {
+    //     auth.signInWithPopup(faceBookProvider)
+    // }
 
-    authenticateFaceBook = () => {
-        auth.signInWithPopup(faceBookProvider)
-    }
-
-    authenticateTwitter = () => {
-        auth.signInWithPopup(twitterProvider)
-    }
+    // authenticateTwitter = () => {
+    //     auth.signInWithPopup(twitterProvider)
+    // }
 
     render() {
         return (
@@ -46,51 +42,37 @@ class SignIn extends Component {
                         onSubmit={this.handleSubmit}
                     >
                         <h1>Welcome! Sign In</h1>
-                        {/* <label htmlFor="email" className={css(styles.label)}>
-                            Email
-            </label>
-                        <input
-                            type="email"
-                            name="email"
-                            className={css(styles.input)}
-                            onChange={this.handleChange}
-                            autoFocus
-                        />
-                        <button type="submit" className={css(styles.button)}>
-                            Sign In
-            </button>
-                        or */}
-            <button
+                        <button
                             type="button"
                             className={css(styles.button)}
-                            onClick={this.authenticate}
+                            onClick={()=>this.authenticate(googleProvider)}
                         >
                             <i className={`fab fa-google ${css(styles.brandIcon)}`}></i>
 
                             Google
             </button>
-            <button
+                        <button
                             type="button"
                             className={css(styles.button)}
-                            onClick={this.authenticateGitHub}
+                            onClick={() => this.authenticate(gitHubProvider)}
                         >
                             <i className={`fab fa-github ${css(styles.brandIcon)}`}></i>
 
                             GitHub
             </button>
-            <button
+                        <button
                             type="button"
                             className={css(styles.button)}
-                            onClick={this.authenticateFaceBook}
+                            onClick={() => this.authenticate(faceBookProvider)}
                         >
                             <i className={`fab fa-facebook-f ${css(styles.brandIcon)}`}></i>
 
                             Facebook
             </button>
-            <button
+                        <button
                             type="button"
                             className={css(styles.button)}
-                            onClick={this.authenticateTwitter}
+                            onClick={() => this.authenticate(twitterProvider)}
                         >
                             <i className={`fab fa-twitter ${css(styles.brandIcon)}`}></i>
 
@@ -118,7 +100,7 @@ const styles = StyleSheet.create({
     header: {
         //backgroundColor: '#fff',
         backgroundColor: 'rgba(255, 255, 255, 0.7)',
- 
+
         height: '4rem',
         padding: '0 2rem',
         margin: 0,
@@ -186,10 +168,10 @@ const styles = StyleSheet.create({
 
         transition: 'color 0.25s ease-out',
 
-    ':hover': {
-      backgroundColor: 'rgb(0,0,0, 0.6)',
-      cursor: 'pointer',
-    },
+        ':hover': {
+            backgroundColor: 'rgb(0,0,0, 0.6)',
+            cursor: 'pointer',
+        },
     },
     p: {
         color: "white",
@@ -197,7 +179,7 @@ const styles = StyleSheet.create({
 
     brandIcon: {
         marginRight: '1rem',
-      },
+    },
 })
 export default SignIn
 

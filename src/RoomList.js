@@ -7,7 +7,8 @@ import RoomForm from './RoomForm'
 
 class RoomList extends Component {
     render() {
-        const { rooms } = this.props
+        const rooms = this.props.rooms.filter(room => !room.dm)
+
         return (
             <Switch>
                 <Route
@@ -16,6 +17,7 @@ class RoomList extends Component {
                         <RoomForm
                             addRoom={this.props.addRoom}
                             users={this.props.users}
+                            user={this.props.user}
                             {...navProps}
                         />
                     )}
@@ -38,12 +40,14 @@ class RoomList extends Component {
 
                                 <ul className={css(styles.list)}>
                                     {
-                                        Object.keys(rooms).map(roomName => (
+                                        Object.keys(rooms).map(
+                                            roomName => (
                                             <RoomLink
                                                 key={roomName}
                                                 room={rooms[roomName]}
                                             />
-                                        ))
+                                        )
+                                        )
                                     }
                                 </ul>
                             </nav>

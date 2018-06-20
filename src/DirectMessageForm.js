@@ -3,13 +3,14 @@ import { StyleSheet, css } from 'aphrodite'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
 
-class RoomForm extends Component {
+class DirectMessageForm extends Component {
   state = {
     room: {
-      name: '',
-      description: '',
-      public: true,
-      members: [],
+        name: '',
+        description: 'Direct message',
+        public: false,
+        dm: true,
+        members: [],
     },
   }
 
@@ -35,7 +36,7 @@ class RoomForm extends Component {
   }
 
   handleChange = (ev) => {
-    const room = { ...this.state.room }
+    const room = {...this.state.room}
 
     const target = ev.target
     const value = target.type === 'checkbox' ? target.checked : target.value
@@ -45,7 +46,7 @@ class RoomForm extends Component {
   }
 
   handleSelectChange = (selectedOption) => {
-    const room = { ...this.state.room }
+    const room = {...this.state.room}
     room.members = selectedOption
 
     this.setState({ room })
@@ -55,47 +56,13 @@ class RoomForm extends Component {
     return (
       <div className={`RoomForm ${css(styles.roomForm)}`}>
         <main className={css(styles.main)}>
-          <h2 className={css(styles.title)}>Create a Room</h2>
+          <h2 className={css(styles.title)}>
+            Direct Message
+          </h2>
           <form
             className={css(styles.form)}
             onSubmit={this.handleSubmit}
           >
-            <p>
-              <label className={css(styles.label)}>
-                <input
-                  type="checkbox"
-                  name="public"
-                  checked={this.state.room.public}
-                  onChange={this.handleChange}
-                />
-                Public Room
-              </label>
-            </p>
-            <p>
-              <label htmlFor="name" className={css(styles.label)}>
-                Room Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={this.state.room.name}
-                className={css(styles.input)}
-                onChange={this.handleChange}
-                autoFocus
-              />
-            </p>
-            <p>
-              <label htmlFor="description" className={css(styles.label)}>
-                Description
-              </label>
-              <input
-                type="text"
-                name="description"
-                value={this.state.room.description}
-                className={css(styles.input)}
-                onChange={this.handleChange}
-              />
-            </p>
             {
               !this.state.room.public && (
                 <div>
@@ -103,7 +70,7 @@ class RoomForm extends Component {
                     htmlFor="members"
                     className={css(styles.label)}
                   >
-                    Members
+                    Start a conversation
                   </label>
                   <Select
                     multi
@@ -111,6 +78,8 @@ class RoomForm extends Component {
                     options={this.users()}
                     value={this.state.room.members}
                     onChange={this.handleSelectChange}
+                    className={css(styles.input)}
+                    placeholder="Invite people..."
                   />
                 </div>
               )
@@ -144,20 +113,15 @@ const styles = StyleSheet.create({
     left: 0,
     height: '100vh',
     width: '100vw',
-    //  backgroundColor: '#f6f6f6',
-    //backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    backgroundImage: `url(https://images.unsplash.com/photo-1481277542470-605612bd2d61?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=eda6f34a3343980b50f2ba298103093f&auto=format&fit=crop&w=1895&q=80)`
+    backgroundColor: '#f6f6f6',
+    zIndex: 1000,
   },
 
   title: {
-    color: 'rgb(49,109,63)',
-    backgroundColor: "transparent",
+    color: '#ff3344',
     fontWeight: 400,
     lineHeight: '80px',
     fontSize: '2rem',
-    marginBottom: '2rem',
-    marginTop: '1rem',
   },
 
   main: {
@@ -172,32 +136,26 @@ const styles = StyleSheet.create({
   },
 
   form: {
-    backgroundColor: 'rgba(0,0,0, 0.4)',
+    backgroundColor: 'white',
     boxShadow: '0 1px 1px rgba(0,0,0,.1)',
     marginBottom: '2rem',
-    paddingBottom: '2rem',
-    marginTop: '7rem',
-    color: "whitesmoke",
+    padding: '2rem',
   },
 
   label: {
     display: 'block',
     textTransform: 'uppercase',
-    color: "whitesmoke",
+    color: '#999',
   },
 
   input: {
-    width: '20rem',
     fontSize: '1.5rem',
     border: 0,
-    borderBottom: '1px solid whitesmoke',
-    marginTop: '1rem',
-    marginBottom: '1rem',
+    borderBottom: '1px solid black',
+    margin: '1rem auto',
     textAlign: 'center',
     padding: '0.5rem',
-    //backgroundColor: 'rgb(250, 250, 250, 0.6)',
-    backgroundColor: "transparent",
-    color: "whitesmoke",
+
     ':focus': {
       outline: 0,
     },
@@ -222,30 +180,17 @@ const styles = StyleSheet.create({
     margin: '0 1rem',
     fontSize: '1.2rem',
     borderRadius: '1rem',
-    backgroundColor: 'rgb(49, 109, 63, 0.7)',
+    backgroundColor: '#ff3333',
     color: 'white',
     width: '10rem',
     cursor: 'pointer',
     outline: 0,
-    transition: 'color 0.25s ease-out',
-
-    ':hover': {
-      backgroundColor: 'rgb(49,109,63)',
-    }
   },
 
   cancel: {
-    backgroundColor: 'rgb(250, 250, 250, 0.6)',
+    backgroundColor: 'white',
     color: '#666',
-
-    cursor: 'pointer',
-    transition: 'color 0.25s ease-out',
-
-    ':hover': {
-      backgroundColor: 'rgb(150,31,31)',
-      color: "white",
-    }
   },
 })
 
-export default RoomForm
+export default DirectMessageForm
