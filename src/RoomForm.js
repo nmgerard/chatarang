@@ -9,6 +9,7 @@ class RoomForm extends Component {
       name: '',
       description: '',
       public: true,
+      dm: false,
       members: [],
     },
   }
@@ -79,7 +80,7 @@ class RoomForm extends Component {
                 type="text"
                 name="name"
                 value={this.state.room.name}
-                className={css(styles.input)}
+                className={css(styles.input, styles.textInput)}
                 onChange={this.handleChange}
                 autoFocus
               />
@@ -92,7 +93,7 @@ class RoomForm extends Component {
                 type="text"
                 name="description"
                 value={this.state.room.description}
-                className={css(styles.input)}
+                className={css(styles.input, styles.textInput)}
                 onChange={this.handleChange}
               />
             </p>
@@ -111,6 +112,8 @@ class RoomForm extends Component {
                     options={this.users()}
                     value={this.state.room.members}
                     onChange={this.handleSelectChange}
+                    className={css(styles.input)}
+                    placeholder="Invite people..."
                   />
                 </div>
               )
@@ -144,6 +147,7 @@ const styles = StyleSheet.create({
     left: 0,
     height: '100vh',
     width: '100vw',
+    zIndex: 1000,
     //  backgroundColor: '#f6f6f6',
     //backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
@@ -175,8 +179,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0, 0.4)',
     boxShadow: '0 1px 1px rgba(0,0,0,.1)',
     marginBottom: '2rem',
-    paddingBottom: '2rem',
-    marginTop: '7rem',
+    padding: '0 2rem 2rem',
+    //paddingBottom: '2rem',
+    //marginTop: '7rem',
     color: "whitesmoke",
   },
 
@@ -223,7 +228,7 @@ const styles = StyleSheet.create({
     fontSize: '1.2rem',
     borderRadius: '1rem',
     backgroundColor: 'rgb(49, 109, 63, 0.7)',
-    color: 'white',
+    color: 'whitesmoke',
     width: '10rem',
     cursor: 'pointer',
     outline: 0,
@@ -243,7 +248,7 @@ const styles = StyleSheet.create({
 
     ':hover': {
       backgroundColor: 'rgb(150,31,31)',
-      color: "white",
+      color: "whitesmoke",
     }
   },
 })

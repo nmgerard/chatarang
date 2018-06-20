@@ -21,6 +21,7 @@ const Sidebar = ({user, signOut, users, rooms, addRoom}) => {
       </h1>
       <RoomList 
       users={users}
+      user={user}
       rooms={rooms}
       addRoom={addRoom}
       />

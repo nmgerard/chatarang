@@ -14,19 +14,6 @@ class SignIn extends Component {
     authenticate = (provider) => {
         auth.signInWithPopup(provider)
     }
-
-    // authenticateGitHub = () => {
-    //     auth.signInWithPopup(gitHubProvider)
-    // }
-
-    // authenticateFaceBook = () => {
-    //     auth.signInWithPopup(faceBookProvider)
-    // }
-
-    // authenticateTwitter = () => {
-    //     auth.signInWithPopup(twitterProvider)
-    // }
-
     render() {
         return (
             <div className={`SignIn ${css(styles.signIn)}`}>
@@ -39,7 +26,6 @@ class SignIn extends Component {
                 <main className={css(styles.main)}>
                     <form
                         className={css(styles.form)}
-                        onSubmit={this.handleSubmit}
                     >
                         <h1>Welcome! Sign In</h1>
                         <button
@@ -130,7 +116,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255, 255, 255, 0.2)',
         boxShadow: '0 1px 1px rgba(0,0,0,.1)',
         marginBottom: '2rem',
-        color: 'white',
+        color: 'whitesmoke',
     },
     label: {
         display: 'block',

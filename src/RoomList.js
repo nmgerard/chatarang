@@ -42,11 +42,11 @@ class RoomList extends Component {
                                     {
                                         Object.keys(rooms).map(
                                             roomName => (
-                                            <RoomLink
-                                                key={roomName}
-                                                room={rooms[roomName]}
-                                            />
-                                        )
+                                                <RoomLink
+                                                    key={roomName}
+                                                    room={rooms[roomName]}
+                                                />
+                                            )
                                         )
                                     }
                                 </ul>
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
         listStyle: 'none',
         marginLeft: 0,
         paddingLeft: 0,
-        paddingBottom: "1rem",
+        //paddingBottom: "1rem",
     },
 
     heading: {

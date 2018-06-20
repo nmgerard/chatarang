@@ -36,8 +36,7 @@ class Main extends Component {
   }
 
   filteredRoomNames = () => {
-    return Object.keys(this.state.rooms)
-      .filter(roomName => {
+    return Object.keys(this.state.rooms).filter(roomName => {
         const room = this.state.rooms[roomName]
         if (!room) return false
 
@@ -55,8 +54,7 @@ class Main extends Component {
   loadRoom = (roomName) => {
     if (roomName === 'new' || roomName === 'new-direct-message') return null
 
-    const room = this.filteredRooms()
-                     .find(room => room.name === roomName)
+    const room = this.filteredRooms().find(room => room.name === roomName)
 
     if (room) {
       this.setState({ room })
@@ -74,6 +72,7 @@ class Main extends Component {
 
   addRoom = (room) => {
     room.displayName = room.name
+
     const { user } = this.props
     if (!room.public) {
       room.members.push({
@@ -109,7 +108,7 @@ class Main extends Component {
           user={this.props.user}
           users={this.props.users}
           signOut={this.props.signOut}
-          rooms={this.state.rooms}
+          rooms={this.filteredRooms()}
           addRoom={this.addRoom}
         />
         <Chat

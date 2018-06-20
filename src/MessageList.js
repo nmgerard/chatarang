@@ -21,8 +21,8 @@ class MessageList extends Component {
                     <h3 style={styles.h3}>#{room.displayName}</h3>
                     {
                         room.dm
-                        ? <p>This is the very beginning of the direct message.</p>
-                        : <p>This is the very beginning of the #{room.displayName} room.</p>
+                        ? <p>This is the beginning of the direct message.</p>
+                        : <p>This is the beginning of the #{room.displayName} room.</p>
                     }
                 </div>
                 {
@@ -44,7 +44,7 @@ const styles = {
         overflowY: "scroll",
     },
     roomAnnouncement: {
-        padding: "2rem 1rem",
+        padding: "2rem 1rem 10rem",
 
     },
     h3: {
