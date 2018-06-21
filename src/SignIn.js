@@ -163,8 +163,9 @@ const styles = StyleSheet.create({
     google: {
           ':hover': {
             cursor: 'pointer',
-            backgroundImage: `url(https://images7.alphacoders.com/909/909467.jpg)`,
-            backgroundSize: "cover",
+            //backgroundImage: `url(https://images7.alphacoders.com/909/909467.jpg)`,
+            //backgroundSize: "cover",
+            backgroundColor: "#EA4335",
 
         },
     },

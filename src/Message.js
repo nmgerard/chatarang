@@ -5,6 +5,7 @@ import { Picker } from 'emoji-mart'
 
 import Avatar from './Avatar'
 import Metadata from './Metadata'
+import Reaction from './Reaction'
 
 class Message extends Component {
   state = {
@@ -16,12 +17,13 @@ class Message extends Component {
   }
 
   handleEmojiSelect = (emoji) => {
-    console.log(emoji)
+    this.props.addReaction(this.props.message, emoji.colons)
     this.togglePicker()
   }
 
   render() {
     const { message } = this.props
+    const reactions = message.reactions || []
 
     return (
       <div className={`Message ${css(styles.Message)}`}>
@@ -30,6 +32,20 @@ class Message extends Component {
           <Metadata message={message} />
           <div className="body">
             {message.body}
+          </div>
+          <div className={css(styles.reactionList)}>
+            {
+              Object.keys(reactions).map(
+                emoji => (
+                  <Reaction
+                    key={emoji}
+                    message={message}
+                    emoji={emoji}
+                    addReaction={this.props.addReaction}
+                  />
+                )
+              )
+            }
           </div>
           <button
             className={css(styles.reactionButton)}
@@ -55,11 +71,11 @@ class Message extends Component {
       Message: {
         display: 'flex',
         marginTop: '1rem',
-        //marginBottom: "1rem",
-        padding: '0 1rem',
+        marginBottom: "1rem",
+        padding: '1rem',
         position: 'relative',
         zIndex: 1,
-        height: "3rem",
+        height: "2rem",
         transition: 'color 0.25s ease-out',
         ':hover': {
           backgroundColor: 'rgba(250,250,250,0.5)',
@@ -86,6 +102,12 @@ class Message extends Component {
         ':hover': {
           color: 'rgb(49,109,63)',
         },
+      },
+
+      reactionList: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        marginTop: '0.5rem',
       },
     })
 

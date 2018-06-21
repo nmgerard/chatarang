@@ -28,6 +28,7 @@ class MessageForm extends Component {
                 </div>
 
                 <input
+                    required
                     type="text"
                     name="body"
                     placeholder="Type a message..."
