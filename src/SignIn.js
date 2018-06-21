@@ -30,7 +30,7 @@ class SignIn extends Component {
                         <h1>Welcome! Sign In</h1>
                         <button
                             type="button"
-                            className={css(styles.button)}
+                            className={css(styles.button, styles.google)}
                             onClick={()=>this.authenticate(googleProvider)}
                         >
                             <i className={`fab fa-google ${css(styles.brandIcon)}`}></i>
@@ -39,7 +39,7 @@ class SignIn extends Component {
             </button>
                         <button
                             type="button"
-                            className={css(styles.button)}
+                            className={css(styles.button, styles.github)}
                             onClick={() => this.authenticate(gitHubProvider)}
                         >
                             <i className={`fab fa-github ${css(styles.brandIcon)}`}></i>
@@ -48,7 +48,7 @@ class SignIn extends Component {
             </button>
                         <button
                             type="button"
-                            className={css(styles.button)}
+                            className={css(styles.button, styles.facebook)}
                             onClick={() => this.authenticate(faceBookProvider)}
                         >
                             <i className={`fab fa-facebook-f ${css(styles.brandIcon)}`}></i>
@@ -57,7 +57,7 @@ class SignIn extends Component {
             </button>
                         <button
                             type="button"
-                            className={css(styles.button)}
+                            className={css(styles.button, styles.twitter)}
                             onClick={() => this.authenticate(twitterProvider)}
                         >
                             <i className={`fab fa-twitter ${css(styles.brandIcon)}`}></i>
@@ -68,7 +68,7 @@ class SignIn extends Component {
 
                     <div className="blurb">
                         <h2 className={css(styles.h2)}>You're in good company.</h2>
-                        <p className={css(styles.p)}>Join the ones of people are already using Chatarang!</p>
+                        <p className={css(styles.p)}>Join the ones of people already using Chatarang!</p>
                     </div>
                 </main>
             </div>
@@ -149,16 +149,47 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgb(49, 109, 63, 0.7)',
         color: 'white',
         width: '15rem',
-        marginBottom: '.5rem',
-        marginRight: '.5rem',
+        marginBottom: '1rem',
+        marginRight: '1rem',
 
         transition: 'color 0.25s ease-out',
 
-        ':hover': {
-            backgroundColor: 'rgb(0,0,0, 0.6)',
+        // ':hover': {
+        //     backgroundColor: 'rgb(0,0,0, 0.6)',
+        //     cursor: 'pointer',
+        // },
+    },
+
+    google: {
+          ':hover': {
             cursor: 'pointer',
+            backgroundImage: `url(https://images7.alphacoders.com/909/909467.jpg)`,
+            backgroundSize: "cover",
+
         },
     },
+
+    facebook: {
+        ':hover': {
+            cursor: 'pointer',
+            backgroundColor: "rgb(59, 89, 152)",
+        },
+    },
+
+    twitter: {
+        ':hover': {
+            cursor: 'pointer',
+            backgroundColor: "rgb(29, 161, 242)",
+        },
+    },
+
+    github: {
+        ':hover': {
+            cursor: 'pointer',
+            backgroundColor: "rgb(0, 0, 0)",
+        },
+    },
+
     p: {
         color: "white",
     },

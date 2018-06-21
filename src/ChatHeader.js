@@ -20,7 +20,7 @@ const ChatHeader = ({ room, removeRoom }) => {
 
 const styles = {
     ChatHeader: {
-        backgroundColor: "#f3f3f3",
+        //backgroundColor: "#f3f3f3",
         borderBottom: "1px solid #ccc",
         padding: '0.25rem 1rem',
         display: "flex",
@@ -46,8 +46,12 @@ const styles = {
         backgroundColor: 'transparent',
         padding: 0,
         cursor: 'pointer',
-        fontSize: '1rem',
+        fontSize: '1.5rem',
         color: 'rgba(0,0,0, 0.4)',
+        transition: 'color 0.25s ease-out',
+        ':hover': {
+          color: 'rgb(49,109,63)',
+        },
     },
 }
 

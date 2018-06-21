@@ -113,12 +113,15 @@ const styles = StyleSheet.create({
     left: 0,
     height: '100vh',
     width: '100vw',
-    backgroundColor: '#f6f6f6',
+    backgroundSize: "cover",
+    //backgroundColor: '#f6f6f6',
+    backgroundImage: `url(https://images.unsplash.com/photo-1498569026542-39c64353e401?ixlib=rb-0.3.5&s=d60eb02beb1bc7c7597efc7e3954eb41&auto=format&fit=crop&w=1867&q=80)`,
     zIndex: 1000,
   },
 
   title: {
-    color: '#ff3344',
+    color: 'white',
+    backgroundColor: "rgb(0,0,0)",
     fontWeight: 400,
     lineHeight: '80px',
     fontSize: '2rem',
@@ -136,7 +139,7 @@ const styles = StyleSheet.create({
   },
 
   form: {
-    backgroundColor: 'white',
+    backgroundColor: 'rgba(0,0,0, 0.5)',
     boxShadow: '0 1px 1px rgba(0,0,0,.1)',
     marginBottom: '2rem',
     padding: '2rem',
@@ -145,11 +148,12 @@ const styles = StyleSheet.create({
   label: {
     display: 'block',
     textTransform: 'uppercase',
-    color: '#999',
+    color: 'whitesmoke',
+    fontSize: "1.25rem",
   },
 
   input: {
-    fontSize: '1.5rem',
+    fontSize: '1rem',
     border: 0,
     borderBottom: '1px solid black',
     margin: '1rem auto',
@@ -180,16 +184,28 @@ const styles = StyleSheet.create({
     margin: '0 1rem',
     fontSize: '1.2rem',
     borderRadius: '1rem',
-    backgroundColor: '#ff3333',
-    color: 'white',
+    backgroundColor: 'rgb(49, 109, 63, 0.7)',
+    color: 'whitesmoke',
     width: '10rem',
     cursor: 'pointer',
     outline: 0,
+    transition: 'color 0.25s ease-out',
+
+    ':hover': {
+      backgroundColor: 'rgb(49,109,63)',
+    }
   },
 
   cancel: {
-    backgroundColor: 'white',
-    color: '#666',
+    backgroundColor: 'rgb(250, 250, 250, 0.5)',
+    color: 'whitesmoke',
+    cursor: 'pointer',
+    transition: 'color 0.25s ease-out',
+
+    ':hover': {
+      backgroundColor: 'rgb(150,31,31)',
+      color: "whitesmoke",
+    }
   },
 })
 

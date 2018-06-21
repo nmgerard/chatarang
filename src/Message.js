@@ -55,10 +55,12 @@ class Message extends Component {
       Message: {
         display: 'flex',
         marginTop: '1rem',
+        //marginBottom: "1rem",
         padding: '0 1rem',
         position: 'relative',
         zIndex: 1,
-
+        height: "3rem",
+        transition: 'color 0.25s ease-out',
         ':hover': {
           backgroundColor: 'rgba(250,250,250,0.5)',
         }
@@ -74,13 +76,13 @@ class Message extends Component {
         outline: 0,
         backgroundColor: 'transparent',
         padding: 0,
-        fontSize: '1rem',
+        fontSize: '1.5rem',
         color: '#ccc',
         cursor: 'pointer',
         position: 'absolute',
         top: '0.5rem',
         right: '0.5rem',
-    
+        transition: 'color 0.25s ease-out',
         ':hover': {
           color: 'rgb(49,109,63)',
         },
