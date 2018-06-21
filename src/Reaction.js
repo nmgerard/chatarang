@@ -28,11 +28,12 @@ const styles = StyleSheet.create({
     marginBottom: '0.25rem',
     color: '#999',
     cursor: 'pointer',
+    backgroundColor: "transparent",
 
     ':hover': {
-      backgroundColor: '#3399ff33',
-      border: '1px solid #3399ff',
-      color: '#3399ff',
+      backgroundColor: 'rgba(49,109,63, 0.3)',
+      border: '1px solid rgb(49,109,63)',
+      color: 'rgb(49,109,63)',
     },
   },
 
